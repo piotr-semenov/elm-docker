@@ -1,0 +1,8 @@
+ignored:
+  - DL3006
+  - DL3018
+  - SC2230
+
+trustedRegistries:
+  - docker.io
+  - hub.docker.com
