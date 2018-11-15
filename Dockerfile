@@ -1,12 +1,14 @@
 FROM node:alpine as builder
 
+SHELL ["ash", "-o", "pipefail", "-c"]
 RUN npm install --only=production --unsafe-perm=true --allow-root\
                 -g elm@latest &&\
     npm cache clean --force
 
-RUN apk add rsync &&\
+# hadolint ignore=SC2086,SC2046
+RUN apk add --no-cache rsync &&\
     mkdir /target &&\
-    export DEPS=$(which env node busybox |\
+    DEPS=$(which env node busybox |\
            xargs -n1 ldd |\
            awk '/statically/{next;} /=>/ { print $3; next; } { print $1 }' |\
            sort | uniq) &&\
@@ -15,7 +17,7 @@ RUN apk add rsync &&\
                      /usr/local/bin/node\
                      $DEPS\
                      $(echo $DEPS | xargs -n1 readlink -f)\
-                     /usr/local/bin/elm*\
+                     /usr/local/bin/elm\
                      /target &&\
     rsync -Rr --links /etc/ssl\
              /usr/local/lib/node_modules/elm\
