@@ -1,8 +1,11 @@
 FROM node:alpine as builder
 
+ARG elmpackages="elm"
+
 SHELL ["ash", "-o", "pipefail", "-c"]
-RUN npm install --only=production --unsafe-perm=true --allow-root\
-                -g elm@latest &&\
+RUN echo $elmpackages |\
+    xargs -n1 echo |\
+    xargs -n1 -I{} npm install --only=production --unsafe-perm=true --allow-root -g {}@latest &&\
     npm cache clean --force
 
 # hadolint ignore=SC2086,SC2046
@@ -17,10 +20,10 @@ RUN apk add --no-cache rsync &&\
                      /usr/local/bin/node\
                      $DEPS\
                      $(echo $DEPS | xargs -n1 readlink -f)\
-                     /usr/local/bin/elm\
+                     /usr/local/bin/elm*\
                      /target &&\
     rsync -Rr --links /etc/ssl\
-             /usr/local/lib/node_modules/elm\
+             /usr/local/lib/node_modules/elm*\
              /target &&\
     apk del rsync
 
