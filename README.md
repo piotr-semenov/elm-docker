@@ -1,7 +1,7 @@
 # How to use Elm compiler from Docker image?
 Just add the following alias to your .bashrc (or .bash_profile if OSX):
 ```bash
-alias elm='docker run --rm -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/elm:latest'
+alias elm='docker run --rm -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:latest'
 ```
 
 Now you are ready to go. For example, like this:
@@ -22,5 +22,5 @@ Elm tools available via Docker image | Docker image tags
 
 Just select the option you need. Please note, you have to specify the right entrypoint flag in your alias, e.g.:
 ```bash
-alias elm-analyse='docker run --rm --entrypoint='elm-analyse' -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/elm:ta-latest'
+alias elm-analyse='docker run --rm --entrypoint='elm-analyse' -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:ta-latest'
 ```
