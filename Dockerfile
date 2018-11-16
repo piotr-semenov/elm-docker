@@ -30,8 +30,11 @@ RUN apk add --no-cache rsync &&\
 
 FROM scratch
 
-LABEL tag='elm:latest'\
-      maintainer='Piotr Semenov <piotr.k.semenov@gmail.com>'
+LABEL \
+    org.label-schema.name="tiny-elm" \
+    org.label-schema.url="https://hub.docker.com/r/semenovp/tiny-elm/" \
+    org.label-schema.vcs-url="https://github.com/piotr-semenov/elm-docker.git" \
+    maintainer='Piotr Semenov <piotr.k.semenov@gmail.com>'
 
 ENV PATH=/bin:/usr/bin:/usr/local/bin
 COPY --from=builder /target /
