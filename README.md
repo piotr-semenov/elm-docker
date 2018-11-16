@@ -24,3 +24,10 @@ Just select the option you need. Please note, you have to specify the right entr
 ```bash
 alias elm-analyse='docker run --rm --entrypoint='elm-analyse' -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:ta-latest'
 ```
+
+
+# How to build on your onw?
+Use build arg elmpackages to specify what Elm tools you want. For example:
+```bash
+docker build --build-arg elmpackages="elm elm-test elm-analyse" -t semenovp/tiny-elm:ta-latest .
+```
