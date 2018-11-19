@@ -11,11 +11,12 @@ RUN echo $elmpackages |\
 # hadolint ignore=SC2086,SC2046
 RUN apk add --no-cache rsync &&\
     mkdir /target &&\
-    DEPS=$(which env node busybox |\
+    DEPS=$(which env node busybox ash sh |\
            xargs -n1 ldd |\
            awk '/statically/{next;} /=>/ { print $3; next; } { print $1 }' |\
            sort | uniq) &&\
     rsync -R --links /bin/busybox\
+                     /bin/ash /bin/sh\
                      /usr/bin/env\
                      /usr/local/bin/node\
                      $DEPS\
