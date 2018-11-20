@@ -1,5 +1,5 @@
 IMAGE_NAME=semenovp/tiny-elm
-VCS_REF=`git rev-parse --short HEAD`
+VCS_REF=$(shell git rev-parse --short HEAD)
 
 .DEFAULT_GOAL := build
 
@@ -25,7 +25,7 @@ test: build
 
 define build_docker_image
 	@docker build \
-		--build-arg VCS_REF=$(VCS_REF) \
+		--build-arg vcsref="$(VCS_REF)" \
 		--build-arg elmpackages="$(1)" \
 		-t $(IMAGE_NAME):$(2) .
 endef
