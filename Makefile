@@ -11,6 +11,18 @@ lint: Dockerfile
 		-i hadolint/hadolint /bin/hadolint -c /tmp/.hadolint.yaml -< Dockerfile
 
 
+define test_docker_image
+	@dgoss run \
+		-v $(PWD)/tests/$(1).yaml:/goss/goss.yaml:ro \
+		--entrypoint=/bin/ash \
+		-it $(IMAGE_NAME):$(2)
+endef
+test: build
+	$(call test_docker_image,elm,latest)
+	$(call test_docker_image,elm-test,t-latest)
+	$(call test_docker_image,elm-analyse,a-latest)
+
+
 define build_docker_image
 	@docker build \
 		--build-arg VCS_REF=$(VCS_REF) \
