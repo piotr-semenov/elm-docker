@@ -32,7 +32,6 @@ RUN apk add --no-cache rsync &&\
 FROM scratch
 
 ARG vcsref
-
 LABEL \
     org.label-schema.name="tiny-elm" \
     org.label-schema.url="https://hub.docker.com/r/semenovp/tiny-elm/" \
