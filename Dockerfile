@@ -1,6 +1,7 @@
 FROM node:alpine as builder
 
 ARG elmpackages="elm"
+ARG VCS_REF
 
 SHELL ["ash", "-o", "pipefail", "-c"]
 RUN echo $elmpackages |\
@@ -34,6 +35,7 @@ FROM scratch
 LABEL \
     org.label-schema.name="tiny-elm" \
     org.label-schema.url="https://hub.docker.com/r/semenovp/tiny-elm/" \
+    org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.vcs-url="https://github.com/piotr-semenov/elm-docker.git" \
     maintainer='Piotr Semenov <piotr.k.semenov@gmail.com>'
 
