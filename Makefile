@@ -34,3 +34,8 @@ build: lint
 	$(call build_docker_image,elm elm-test,t-latest)
 	$(call build_docker_image,elm elm-analyse,a-latest)
 	$(call build_docker_image,elm elm-test elm-analyse,ta-latest)
+
+
+clean:
+	@docker rmi $$(docker images -q $(IMAGE_NAME))
+	@docker system prune -f
