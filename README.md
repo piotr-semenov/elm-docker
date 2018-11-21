@@ -1,3 +1,8 @@
+[![Elm:0.19.0](https://img.shields.io/badge/Elm-0.19.0-green.svg)](https://elm-lang.org/)
+[![](https://images.microbadger.com/badges/image/semenovp/tiny-elm.svg)](https://microbadger.com/images/semenovp/tiny-elm/)
+[![Docker Pull](https://img.shields.io/docker/pulls/semenovp/tiny-elm.svg)](https://hub.docker.com/r/semenovp/tiny-elm/)
+
+
 # How to use Elm compiler from Docker image?
 Just add the following alias to your .bashrc (or .bash_profile if OSX):
 ```bash
