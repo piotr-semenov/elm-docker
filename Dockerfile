@@ -1,4 +1,5 @@
 FROM node:alpine as builder
+LABEL stage=intermediate
 
 ARG elmpackages="elm"
 
@@ -33,7 +34,9 @@ FROM scratch
 
 ARG vcsref
 LABEL \
+    stage=final \
     org.label-schema.name="tiny-elm" \
+    org.label-schema.description="Ultra-slim dockerized Elm compiler and tools." \
     org.label-schema.url="https://hub.docker.com/r/semenovp/tiny-elm/" \
     org.label-schema.vcs-ref="$vcsref" \
     org.label-schema.vcs-url="https://github.com/piotr-semenov/elm-docker.git" \
