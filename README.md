@@ -1,4 +1,4 @@
-[![Elm:0.19.0](https://img.shields.io/badge/Elm-0.19.0-green.svg)](https://elm-lang.org/)
+[![Elm:0.19.1](https://img.shields.io/badge/Elm-0.19.1-green.svg)](https://elm-lang.org/)
 [![](https://images.microbadger.com/badges/image/semenovp/tiny-elm.svg)](https://microbadger.com/images/semenovp/tiny-elm/)
 [![Docker Pull](https://img.shields.io/docker/pulls/semenovp/tiny-elm.svg)](https://hub.docker.com/r/semenovp/tiny-elm/)
 
@@ -20,7 +20,7 @@ Please, review the images proposed by this repository:
 
 Elm tools available in Docker image | Docker image tags
 ----------------------------------- | -----------------
-*elm* | latest, 0.19.0-bugfix2
+*elm* | latest, 0.19.1-3
 *elm, elm-test* | t-latest
 *elm, elm-analyse* | a-latest
 *elm, elm-test, elm-analyse* | ta-latest
