@@ -3,7 +3,7 @@ LABEL stage=intermediate
 
 ARG elmpackages="elm"
 
-SHELL ["ash", "-o", "pipefail", "-c"]
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 RUN echo $elmpackages |\
     xargs -n1 echo |\
     xargs -n1 -I{} npm install --only=production --unsafe-perm=true --allow-root -g {}@latest &&\
