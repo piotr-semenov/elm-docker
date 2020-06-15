@@ -10,7 +10,8 @@ RUN echo $elmpackages |\
     npm cache clean --force
 
 # hadolint ignore=SC2086,SC2046
-RUN apk add --no-cache rsync &&\
+RUN apk update &&\
+    apk add --no-cache rsync &&\
     mkdir /target &&\
     DEPS=$(which env node busybox ash sh |\
            xargs -n1 ldd |\
