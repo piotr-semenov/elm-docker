@@ -1,5 +1,6 @@
 [![Elm:0.19.1](https://img.shields.io/badge/Elm-0.19.1-green.svg)](https://elm-lang.org/)
-[![](https://images.microbadger.com/badges/image/semenovp/tiny-elm.svg)](https://microbadger.com/images/semenovp/tiny-elm/)
+[![](https://img.shields.io/docker/image-size/semenovp/tiny-elm/latest)](https://hub.docker.com/r/semenovp/tiny-elm/)
+[![](https://img.shields.io/microbadger/layers/semenovp/tiny-elm/latest)](https://microbadger.com/images/semenovp/tiny-elm/)
 [![Docker Pull](https://img.shields.io/docker/pulls/semenovp/tiny-elm.svg)](https://hub.docker.com/r/semenovp/tiny-elm/)
 
 
