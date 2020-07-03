@@ -28,6 +28,7 @@ Elm tools available in Docker image | Docker image tags
 
 Just select the option you need. Please note, you have to specify the right entrypoint in your alias, e.g.:
 ```bash
+alias elm='docker run --rm -it --entrypoint='elm' -v $PWD:/workdir -w /workdir semenovp/tiny-elm'
 alias elm-analyse='docker run --rm --entrypoint='elm-analyse' -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:ta-latest'
 ```
 
