@@ -30,6 +30,7 @@ test:  ## Tests the the already built images.
 	$(call test_docker_image,elm,latest)
 	$(call test_docker_image,elm-test,t-latest)
 	$(call test_docker_image,elm-analyse,a-latest)
+	$(call test_docker_image,elm-review,r-latest)
 
 
 define build_docker_image
@@ -43,7 +44,9 @@ build: lint  ## Builds all the images.
 	$(call build_docker_image,,latest)
 	$(call build_docker_image,elm-test,t-latest)
 	$(call build_docker_image,elm-analyse,a-latest)
+	$(call build_docker_image,elm-review,r-latest)
 	$(call build_docker_image,elm-test elm-analyse,ta-latest)
+	$(call build_docker_image,elm-test elm-analyse elm-review,all-latest)
 
 
 .PHONY: clean
