@@ -37,7 +37,8 @@ define build_docker_image
 	@docker build \
 		--build-arg vcsref="$(VCS_REF)" \
 		--build-arg elmpackages="$(1)" \
-		-t $(IMAGE_NAME):$(2) .
+		-t $(IMAGE_NAME):$(2) . \
+		--no-cache
 endef
 .PHONY: build
 build: lint  ## Builds all the images.
