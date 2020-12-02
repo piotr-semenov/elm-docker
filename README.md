@@ -26,16 +26,18 @@ Please, review the images proposed by this repository.
 
 | Elm tools available in Docker image | Docker image tags |
 |:-----------------------------------:|:-----------------:|
-| *elm* | latest, 0.19.1-3 |
+| *elm* | latest, 0.19.1 |
 | *elm, elm-test* | t-latest |
 | *elm, elm-analyse* | a-latest |
+| *elm, elm-review* | r-latest |
 | *elm, elm-test, elm-analyse* | ta-latest |
+| *elm, elm-test, elm-analyse, elm-review* | all-latest |
 
 
 # How to build on your own?
 Use build arg `elmpackages` to select the Elm tools you want to be in Docker image.
 ```bash
-docker build --build-arg elmpackages="elm-test elm-coverage" -t semenovp/tiny-elm:tc-latest .
+docker build --build-arg elmpackages="elm-test elm-coverage elm-esm" -t semenovp/tiny-elm:tce-latest .
 ```
 
 # List of competing Docker images
