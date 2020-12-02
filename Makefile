@@ -15,14 +15,14 @@ help:  ## Prints the help.
 lint: Dockerfile  ## Lints the Dockerfile.
 	@docker run \
 		--rm \
-		-v $(PWD)/.hadolint.yaml:/tmp/.hadolint.yaml:ro \
-		-i hadolint/hadolint /bin/hadolint -c /tmp/.hadolint.yaml -< Dockerfile
+		-v $(PWD)/dockerfile-commons/.hadolint.yaml:/tmp/.hadolint.yaml:ro \
+		-i hadolint/hadolint /bin/hadolint -f tty -c /tmp/.hadolint.yaml -< Dockerfile
 
 
 define test_docker_image
 	@dgoss run \
 		-v $(PWD)/tests/$(1).yaml:/goss/goss.yaml:ro \
-		--entrypoint=/bin/ash \
+		--entrypoint=/bin/sh \
 		-it $(IMAGE_NAME):$(2)
 endef
 .PHONY: test
@@ -40,10 +40,10 @@ define build_docker_image
 endef
 .PHONY: build
 build: lint  ## Builds all the images.
-	$(call build_docker_image,elm,latest)
-	$(call build_docker_image,elm elm-test,t-latest)
-	$(call build_docker_image,elm elm-analyse,a-latest)
-	$(call build_docker_image,elm elm-test elm-analyse,ta-latest)
+	$(call build_docker_image,,latest)
+	$(call build_docker_image,elm-test,t-latest)
+	$(call build_docker_image,elm-analyse,a-latest)
+	$(call build_docker_image,elm-test elm-analyse,ta-latest)
 
 
 .PHONY: clean
