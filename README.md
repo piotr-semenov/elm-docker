@@ -4,37 +4,44 @@
 [![Docker Pull](https://img.shields.io/docker/pulls/semenovp/tiny-elm.svg)](https://hub.docker.com/r/semenovp/tiny-elm/)
 
 
-# How to use Elm compiler from Docker image?
-Just add the following alias to your .bashrc (or .bash_profile if OSX):
+# How to use Elm compiler/tools from this Docker image?
+Just use the following alias template to modify your .bashrc (or .bash_profile if OSX):
 ```bash
-alias elm='docker run --rm -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:latest'
+alias <cmd>='docker run --rm --entrypoint "<cmd>" -v `pwd`:/workdir -v `pwd`/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:ta-latest'
 ```
+
+The placeholder `<cmd>` stands for `elm` or tools like `elm-analyse`, `elm-test`, etc.
 
 Now you are ready to go. For example, do like this:
 ```bash
 elm make /path/to/file.elm --output=/path/to/file.js --optimize
+
+elm-test --version
+> 0.19.1-revision4
 ```
 
 
-# What is about elm-analyse and elm-test tools?
-Please, review the images proposed by this repository:
+# What Docker images are provided?
+Please, review the images proposed by this repository.
 
-Elm tools available in Docker image | Docker image tags
------------------------------------ | -----------------
-*elm* | latest, 0.19.1-3
-*elm, elm-test* | t-latest
-*elm, elm-analyse* | a-latest
-*elm, elm-test, elm-analyse* | ta-latest
-
-Just select the option you need. Please note, you have to specify the right entrypoint in your alias, e.g.:
-```bash
-alias elm='docker run --rm -it --entrypoint='elm' -v $PWD:/workdir -w /workdir semenovp/tiny-elm'
-alias elm-analyse='docker run --rm --entrypoint='elm-analyse' -v $PWD:/workdir -v $PWD/.elm:/.elm -w /workdir -e http_proxy -e https_proxy semenovp/tiny-elm:ta-latest'
-```
+| Elm tools available in Docker image | Docker image tags |
+|:-----------------------------------:|:-----------------:|
+| *elm* | latest, 0.19.1-3 |
+| *elm, elm-test* | t-latest |
+| *elm, elm-analyse* | a-latest |
+| *elm, elm-test, elm-analyse* | ta-latest |
 
 
 # How to build on your own?
-Use build arg `elmpackages` to select the Elm tools you want to be in Docker image:
+Use build arg `elmpackages` to select the Elm tools you want to be in Docker image.
 ```bash
-docker build --build-arg elmpackages="elm elm-test elm-analyse" -t semenovp/tiny-elm:ta-latest .
+docker build --build-arg elmpackages="elm-test elm-coverage" -t semenovp/tiny-elm:tc-latest .
 ```
+
+# List of competing Docker images
+
+Review the sizes of another elm-related images retrieved from [DockerHub](https://hub.docker.com) against current one built on Elm v0.19.1.
+
+| REPOSITORY | YYYY-MM-DD | COMPRESSED / UNCOMPRESSED SIZE |
+|:-----------|:----------:|:------------------------------:|
+| **[semenovp/tiny-elm:latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **/ 30.1MB** |
