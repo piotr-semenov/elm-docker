@@ -51,5 +51,5 @@ build: lint  ## Builds all the images.
 
 .PHONY: clean
 clean:  ## Cleans out the docker images built by 'make build'.
-	@docker rmi $$(docker images -q $(IMAGE_NAME))
+	@(docker rmi $$(docker images -q $(IMAGE_NAME)) 2> /dev/null || true)
 	@docker system prune -f
