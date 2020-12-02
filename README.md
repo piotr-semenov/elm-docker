@@ -46,4 +46,16 @@ Review the sizes of another elm-related images retrieved from [DockerHub](https:
 
 | REPOSITORY | YYYY-MM-DD | COMPRESSED / UNCOMPRESSED SIZE |
 |:-----------|:----------:|:------------------------------:|
-| **[semenovp/tiny-elm:latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **/ 30.1MB** |
+| **[semenovp/tiny-elm:latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **7.51MB / 30.1MB** |
+| [codesimple/elm:0.19](https://hub.docker.com/r/codesimple/elm/) | 2019-11-20 | 25.4MB / 89.7MB |
+| [holmusk/elm-ci:latest](https://hub.docker.com/r/holmusk/elm-ci/) | 2019-11-22 | 464.42MB / 1.27GB |
+\
+| **[semenovp/tiny-elm:a-latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **42.29MB / 126MB** |
+| [sirehna/elm-analyse:latest](https://hub.docker.com/r/sirehna/elm-analyse) | 2020-05-06 | 59.42MB / 172MB |
+\
+| **[semenovp/tiny-elm:t-latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **41.69MB / 130MB** |
+| [aminnairi/elm-test:latest](https://hub.docker.com/r/aminnairi/elm-test/) | 2020-02-27 | 54.41MB / 176MB |
+| [ymtszw/elm_for_ci:0.19.0](https://hub.docker.com/r/ymtszw/elm_for_ci/) | 2019-11-08 | 79.6MB / 241MB |
+| [pastelinc/elm-test:latest](https://hub.docker.com/r/pastelinc/elm-test/) | 2020-07-16 | 349.13MB / 971MB |
+\
+| **[semenovp/tiny-elm:r-latest](https://hub.docker.com/r/semenovp/tiny-elm/)** | 2020-12-02 | **41.19MB / 124MB** |
