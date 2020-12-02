@@ -1,0 +1,3 @@
+[submodule "dockerfile-commons"]
+	path = dockerfile-commons
+	url = https://github.com/piotr-semenov/dockerfile-commons.git
