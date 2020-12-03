@@ -18,7 +18,7 @@ COPY ./dockerfile-commons/reduce_alpine.sh /tmp/reduce_alpine.sh
 RUN chmod +x /tmp/reduce_alpine.sh &&\
     \
     # First off, reduce Alpine to already installed elm compiler.\
-    /tmp/reduce_alpine.sh -v /target sh env busybox /usr/local/bin/elm\
+    /tmp/reduce_alpine.sh -v /target /usr/local/bin/elm\
                                      \
                                      /etc/ssl;\
     \
