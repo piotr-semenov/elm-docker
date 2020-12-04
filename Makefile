@@ -22,6 +22,7 @@ lint: Dockerfile  ## Lints the Dockerfile.
 define test_docker_image
 	@$(shell which dgoss) run \
 		-v $(PWD)/tests/$(1).yaml:/goss/goss.yaml:ro \
+		-e GOSS_FILES_STRATEGY=cp \
 		--entrypoint=/bin/sh \
 		-it $(IMAGE_NAME):$(2)
 endef
