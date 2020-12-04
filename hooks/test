@@ -5,4 +5,4 @@ set -e
 # Install dgoss (see https://github.com/aelsabbahy/goss#installation).
 curl -fsSL https://goss.rocks/install | sh
 
-make -f ../Makefile test
+make test
