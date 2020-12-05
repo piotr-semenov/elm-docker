@@ -2,7 +2,7 @@
 
 set -e
 
-TAGS="t-latest a-latest r-latest ta-latest all-latest"
+TAGS="latest t-latest a-latest r-latest ta-latest all-latest"
 for tag in $TAGS; do
     name=$(echo "$IMAGE_NAME" | sed -E 's/(.*):.*/\1:'"$tag"'/')
     docker push "$name"
