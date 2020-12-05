@@ -2,6 +2,8 @@
 
 set -e
 
+env
+
 TAGS="t-latest a-latest r-latest ta-latest all-latest"
 for tag in $TAGS; do
     docker push "$IMAGE_NAME:$tag"
