@@ -15,12 +15,11 @@ RUN apk update &&\
 COPY ./dockerfile-commons/reduce_alpine.sh /tmp/reduce_alpine.sh
 
 # hadolint ignore=SC2046
-RUN chmod +x /tmp/reduce_alpine.sh &&\
-    \
+RUN \
     # First off, reduce Alpine to already installed elm compiler.\
-    /tmp/reduce_alpine.sh -v /target /usr/local/bin/elm\
-                                     \
-                                     /etc/ssl;\
+    sh /tmp/reduce_alpine.sh -v /target /usr/local/bin/elm\
+                                        \
+                                        /etc/ssl;\
     \
     # If it provides the list of elm tools then install as well.\
     if [ "$elmpackages" ]; then\
@@ -29,9 +28,9 @@ RUN chmod +x /tmp/reduce_alpine.sh &&\
         xargs -n1 -I{} npm install --only=production --unsafe-perm=true --allow-root -g {}@latest &&\
         npm cache clean --force &&\
         \
-        /tmp/reduce_alpine.sh -v /target node $(echo $elmpackages | xargs -n1 -I@ echo /usr/local/bin/@)\
-                                         \
-                                         /usr/local/lib/node_modules/elm*;\
+        sh /tmp/reduce_alpine.sh -v /target node $(echo $elmpackages | xargs -n1 -I@ echo /usr/local/bin/@)\
+                                            \
+                                            /usr/local/lib/node_modules/elm*;\
     fi
 
 
