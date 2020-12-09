@@ -1,0 +1,46 @@
+name: CI to GitHub Packages
+on:
+  push:
+    branches: [main]
+
+env:
+  IMAGE_NAME: tiny-elm
+  TAGS: latest t-latest a-latest r-latest ta-latest all-latest
+  REGISTRY: docker.pkg.github.com
+
+jobs:
+  build_and_publish:
+    name: Build tiny-elm images
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup BuildX to use Docker Driver.
+        uses: docker/setup-buildx-action@v1
+        with:
+          driver: docker
+
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Images
+        run: |
+          make build
+
+      - name: Push to Registry
+        shell: bash
+        run: |
+          for tag in ${{ env.TAGS }}; do
+              name="$IMAGE_NAME:$tag"
+              remote_name="${{ env.REGISTRY }}/${GITHUB_REPOSITORY}/$name"
+              docker tag "semenovp/$name" "$remote_name"
+              docker push "$remote_name"
+          done
