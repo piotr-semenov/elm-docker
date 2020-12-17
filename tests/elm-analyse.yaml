@@ -1,3 +1,4 @@
+---
 command:
   elm-analyse --version:
     exit-status: 0

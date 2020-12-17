@@ -1,3 +1,4 @@
+---
 command:
   elm-review --version:
     exit-status: 0
