@@ -1,19 +1,10 @@
--include dockerfile-commons/test-dockerignore.mk
--include dockerfile-commons/lint-dockerfiles.mk
--include dockerfile-commons/docker-funcs.mk
+include dockerfile-commons/Makefile
 
 
 IMAGE_NAME=semenovp/tiny-elm
 VCS_REF=$(shell git rev-parse --short HEAD)
 
 .DEFAULT_GOAL := build
-
-
-.PHONY: help
-help:  ## Prints the help.
-	@echo 'Commands:'
-	@grep --no-filename -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) |\
-	 awk 'BEGIN {FS = ":.*?## "}; {printf "  %-20s %s\n", $$1, $$2}'
 
 
 define test_image
@@ -36,12 +27,11 @@ build: lint-dockerfiles  ## Builds all the images.
 	@$(call build_image,t-latest,elm-test)
 	@$(call build_image,a-latest,elm-analyse)
 	@$(call build_image,r-latest,elm-review)
-	@$(call build_image,t-latest,elm-test)
 	@$(call build_image,ta-latest,elm-test elm-analyse)
 	@$(call build_image,all-latest,elm-test elm-analyse elm-review)
 
 
 .PHONY: clean
-clean:  ## Cleans out the docker images built by 'make build'.
+clean:  clean-docker  ## Cleans out the docker images built by 'make build'.
 	@(docker rmi $$(docker images -q $(IMAGE_NAME)) 2> /dev/null || true)
 	@docker system prune -f
